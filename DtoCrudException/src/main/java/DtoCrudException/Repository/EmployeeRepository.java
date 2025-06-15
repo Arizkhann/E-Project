@@ -1,5 +1,6 @@
 package DtoCrudException.Repository;
 
+import DtoCrudException.Dto.EmployeeDto;
 import DtoCrudException.Entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -19,4 +20,5 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
            "AND (:maxSalary IS NULL OR e.salary <= :maxSalary)")
    List<Employee> searchEmployees(@Param("name") String name,@Param("minSalary") Double minSalary, @Param("maxSalary") Double maxSalary);
 
+   List<Employee> findBySalaryGreaterThan(Double threshold);
 }

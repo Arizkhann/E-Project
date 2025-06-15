@@ -131,5 +131,14 @@ public class EmployeeServiceImpl implements EmployeeService{
         return employees.stream().map(EmployeeMapper::mapToEMployeeDto).collect(Collectors.toList());
     }
 
+    @Override
+    public List<EmployeeDto> getEmployeesWithSalaryAbove(Double threshold) {
+
+        List<Employee> employees = employeeRepository.findBySalaryGreaterThan(threshold);
+
+
+        return employees.stream().map(EmployeeMapper::mapToEMployeeDto).toList();
+    }
+
 
 }
