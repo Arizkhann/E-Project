@@ -29,6 +29,9 @@ Page<EmployeeDto> getAllByPaginationAndSorting(int pageNo,int pageSize,String fi
 
 
 EmployeeDto getByNameAndEmail(String name,String email);
+
+
+    List<EmployeeDto> searchEmployees(String name, Double minSalary, Double maxSalary );
 }
 
 
