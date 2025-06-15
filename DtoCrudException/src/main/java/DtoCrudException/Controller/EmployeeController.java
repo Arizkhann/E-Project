@@ -142,9 +142,16 @@ public class EmployeeController {
         return ResponseEntity.ok(result);
     }
 
+//: Add Endpoint to Get Employees Whose Salary Is Above a Given Threshold
+// /api/salary/above/500
 
 
 
+    @GetMapping("/salary/above/{threshold}")
+    public ResponseEntity<List<EmployeeDto>> getEmployeesWithSalaryAbove(@PathVariable Double threshold) {
+        List<EmployeeDto> employees = employeeService.getEmployeesWithSalaryAbove(threshold);
+        return ResponseEntity.ok(employees);
+    }
 
 
 }

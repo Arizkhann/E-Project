@@ -32,6 +32,8 @@ EmployeeDto getByNameAndEmail(String name,String email);
 
 
     List<EmployeeDto> searchEmployees(String name, Double minSalary, Double maxSalary );
+
+    List<EmployeeDto> getEmployeesWithSalaryAbove(Double threshold);
 }
 
 
