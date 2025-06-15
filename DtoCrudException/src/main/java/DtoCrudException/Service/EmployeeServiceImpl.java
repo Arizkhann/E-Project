@@ -125,5 +125,11 @@ public class EmployeeServiceImpl implements EmployeeService{
         return EmployeeMapper.mapToEMployeeDto(employee);
     }
 
+    @Override
+    public List<EmployeeDto> searchEmployees(String name, Double minSalary, Double maxSalary) {
+        List<Employee> employees = employeeRepository.searchEmployees(name,minSalary,maxSalary);
+        return employees.stream().map(EmployeeMapper::mapToEMployeeDto).collect(Collectors.toList());
+    }
+
 
 }

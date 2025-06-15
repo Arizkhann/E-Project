@@ -131,6 +131,18 @@ public class EmployeeController {
     }
 
 
+    @GetMapping("/search")
+    public ResponseEntity<List<EmployeeDto>> searchEmployees(@RequestParam String name, @RequestParam(required = false) Double minSalary, @RequestParam(required = false) Double maxSalary){
+        List<EmployeeDto> result = employeeService.searchEmployees(name,minSalary,maxSalary);
+
+        if(result.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(result);
+    }
+
+
 
 
 
