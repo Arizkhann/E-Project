@@ -1,6 +1,7 @@
 package DtoCrudException.Controller;
 
 import DtoCrudException.Dto.EmployeeDto;
+import DtoCrudException.Dto.UpdateMobileDto;
 import DtoCrudException.Service.EmployeeService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -130,7 +131,8 @@ public class EmployeeController {
 
     }
 
-
+//search API to Filter Employees by Partial Name and Salary Range
+// api/search
     @GetMapping("/search")
     public ResponseEntity<List<EmployeeDto>> searchEmployees(@RequestParam String name, @RequestParam(required = false) Double minSalary, @RequestParam(required = false) Double maxSalary){
         List<EmployeeDto> result = employeeService.searchEmployees(name,minSalary,maxSalary);
@@ -152,6 +154,14 @@ public class EmployeeController {
         List<EmployeeDto> employees = employeeService.getEmployeesWithSalaryAbove(threshold);
         return ResponseEntity.ok(employees);
     }
+
+   //Endpoint to Update Only Employee's Mobile Number by ID
+    // api/update-mobile/id
+   @PatchMapping("/update-mobile/{id}")
+    public ResponseEntity<String> updateEmpMobile(@PathVariable Long id, @RequestBody @Valid UpdateMobileDto updateMobileDto){
+        employeeService.updateMobileNumber(id, updateMobileDto.getMobileNo());
+        return ResponseEntity.ok("Mobile number updated Successfully");
+   }
 
 
 }

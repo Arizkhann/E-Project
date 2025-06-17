@@ -30,10 +30,15 @@ Page<EmployeeDto> getAllByPaginationAndSorting(int pageNo,int pageSize,String fi
 
 EmployeeDto getByNameAndEmail(String name,String email);
 
-
+    //task-1 by Ananya
     List<EmployeeDto> searchEmployees(String name, Double minSalary, Double maxSalary );
 
+    //task by Ariz
     List<EmployeeDto> getEmployeesWithSalaryAbove(Double threshold);
+
+
+    //task-2 by Ananya
+    public void updateMobileNumber(Long id, String newMobile);
 }
 
 

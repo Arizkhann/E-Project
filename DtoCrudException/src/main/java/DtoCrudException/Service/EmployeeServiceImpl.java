@@ -140,5 +140,12 @@ public class EmployeeServiceImpl implements EmployeeService{
         return employees.stream().map(EmployeeMapper::mapToEMployeeDto).toList();
     }
 
+    @Override
+    public void updateMobileNumber(Long id, String newMobile) {
+        Employee employee = employeeRepository.findById(id).orElseThrow(()-> new ResourceNotFoundExceptions("Employee not found with id: "+id));
+        employee.setMobile(newMobile);
+        employeeRepository.save(employee);
+    }
+
 
 }
